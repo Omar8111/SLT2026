@@ -16,8 +16,12 @@ public class Main {
             System.out.print("column (0-2): ");
             int col = scanner.nextInt();
 
-            game.getBoard().makeMove(row, col, game.getCurrentPlayer().getSymbol());
-            game.switchPlayer();
+            boolean validMove = game.getBoard().makeMove(row, col, game.getCurrentPlayer().getSymbol());
+            if (validMove) {
+                game.switchPlayer();
+            } else {
+                System.out.println("Feld bereits belegt! Nochmal versuchen!");
+            }
         }
     }
 }

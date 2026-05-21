@@ -35,16 +35,16 @@ public class Board {
     }
 
     public void print() {
-        System.out.println("▁▁▁▁▁▁");
+        System.out.println("▁▁▁▁▁▁▁▁");
         for (int i = 0; i < 3; i++) {
-            System.out.print("|");
+            System.out.print("| ");
             for (int j = 0; j < 3; j++) {
                 System.out.print(cells[i][j] == '\0' ? " " : cells[i][j]);
-                System.out.print("|");
+                System.out.print(" | ");
             }
             System.out.println();
         }
-        System.out.println("▔▔▔▔");
+        System.out.println("▔▔▔▔▔▔▔");
     }
 
     public char[][] getCells() {

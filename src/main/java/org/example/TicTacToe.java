@@ -27,6 +27,12 @@ public class TicTacToe {
             System.out.print("column (0-2): ");
             int y = scanner.nextInt();
 
+            if (x < 0 || x > 2 || y < 0 || y > 2) {
+                System.out.println("Ungültige Eingabe! Nur 0-2 erlaubt!");
+                continue;
+            }
+
+
             if (board.isCellEmpty(x, y)) {
                 board.place(x, y, currentPlayer.getMarker());
 

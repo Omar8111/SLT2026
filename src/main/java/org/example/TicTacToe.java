@@ -19,39 +19,53 @@ public class TicTacToe {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Current Player: " + currentPlayer.getMarker());
-            board.print();
-
-            System.out.print("row (0-2): ");
-            int x = scanner.nextInt();
-            System.out.print("column (0-2): ");
-            int y = scanner.nextInt();
-
-            if (x < 0 || x > 2 || y < 0 || y > 2) {
-                System.out.println("Ungültige Eingabe! Nur 0-2 erlaubt!");
-                continue;
-            }
+            board.clear();
+            currentPlayer = player1;
 
 
-            if (board.isCellEmpty(x, y)) {
-                board.place(x, y, currentPlayer.getMarker());
+            while (true) {
+                System.out.println("Current Player: " + currentPlayer.getMarker());
+                board.print();
 
-                if (hasWinner()) {
-                    board.print();
-                    System.out.println("Player " + currentPlayer.getMarker() + " wins!");
-                    break;
+                System.out.print("row (0-2): ");
+                int x = scanner.nextInt();
+                System.out.print("column (0-2): ");
+                int y = scanner.nextInt();
+
+                if (x < 0 || x > 2 || y < 0 || y > 2) {
+                    System.out.println("Ungültige Eingabe! Nur 0-2 erlaubt!");
+                    continue;
                 }
 
-                if (board.isFull()) {
-                    board.print();
-                    System.out.println("Draw!");
-                    break;
-                }
 
-                switchCurrentPlayer();
-            } else {
-                System.out.println("Feld bereits belegt! Nochmal versuchen!");
+                if (board.isCellEmpty(x, y)) {
+                    board.place(x, y, currentPlayer.getMarker());
+
+                    if (hasWinner()) {
+                        board.print();
+                        System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                        break;
+                    }
+
+                    if (board.isFull()) {
+                        board.print();
+                        System.out.println("Draw!");
+                        break;
+                    }
+
+                    switchCurrentPlayer();
+                } else {
+                    System.out.println("Feld bereits belegt! Nochmal versuchen!");
+                }
             }
+
+            System.out.print("Nochmal spielen? (j/n): ");  // ← NEU
+            String answer = scanner.next();                  // ← NEU
+            if (!answer.equals("j")) {                       // ← NEU
+                System.out.println("Danke fürs Spielen! Bye!");
+                break;
+            }
+
         }
     }
 

@@ -39,12 +39,13 @@ public class TicTacToe {
                 if (hasWinner()) {
                     board.print();
                     System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                    System.out.println("Player " + (currentPlayer == player1 ? player2.getMarker() : player1.getMarker()) + " loses!");
                     break;
                 }
 
                 if (board.isFull()) {
                     board.print();
-                    System.out.println("Draw!");
+                    System.out.println("It's a Draw! No winner this time.");
                     break;
                 }
 
